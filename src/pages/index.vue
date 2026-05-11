@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import HomeView from '../views/HomeView.vue'
+
 defineOptions({
   name: 'HomePage'
 })
 </script>
 
 <template>
-  <h2>Home</h2>
+  <HomeView />
 </template>
