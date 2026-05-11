@@ -37,15 +37,15 @@ export function useLeadForm() {
     const value = form.value[field]
 
     if (!isRequired(value)) {
-      return 'Este campo es obligatorio'
+      return 'This field is required'
     }
 
     if (field === 'email' && !isValidEmail(form.value.email)) {
-      return 'Formato de email no valido'
+      return 'Invalid email format'
     }
 
     if (field === 'birthDate' && !isValidDate(form.value.birthDate)) {
-      return 'Fecha no valida'
+      return 'Invalid date'
     }
 
     return ''
@@ -121,7 +121,7 @@ export function useLeadForm() {
         }
       })
 
-      submitSuccess.value = 'Lead creado correctamente'
+      submitSuccess.value = 'Lead created successfully'
       resetForm()
       await fetchReportData()
     } catch (error: unknown) {
@@ -132,7 +132,7 @@ export function useLeadForm() {
       submitError.value =
         typedError?.data?.message ||
         typedError?.message ||
-        'No se pudo crear el lead'
+        'Unable to create the lead'
     } finally {
       isSubmitting.value = false
     }
@@ -148,7 +148,7 @@ export function useLeadForm() {
       campaigns.value = response.campaigns
       cities.value = response.locations
     } catch (error) {
-      console.error('Error cargando info de campañas y ciudades:', error)
+      console.error('Error loading campaigns and cities info:', error)
     }
   }
 
