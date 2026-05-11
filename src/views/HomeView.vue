@@ -13,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex gap-8 py-16">
+  <div class="flex gap-8 py-8 lg:py-16 lg:flex-nowrap flex-wrap">
     <LeadForm />
     <LeadList />
   </div>

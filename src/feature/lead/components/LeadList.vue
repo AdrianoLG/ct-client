@@ -10,9 +10,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-6 w-full">
+  <div class="p-0 lg:p-6 w-full">
     <h3 class="text-lg font-bold">Campaign Performance Report</h3>
-    <table class="shadow-md w-full mt-8 rounded-md overflow-hidden">
+    <table class="shadow-md w-full mt-4 lg:mt-8 rounded-md overflow-hidden">
       <thead>
         <tr class="bg-gray-100">
           <th class="text-left px-4 py-2 text-sm">Campaign Name</th>

@@ -4,9 +4,9 @@
       <img
         src="../../assets/img/logo.svg"
         alt="Logo"
-        class="inline-block w-6"
+        class="inline-block w-5 lg:w-6"
       >
-      <h1 class="text-2xl font-bold">Lead Dashboard</h1>
+      <h1 class="text-lg lg:text-2xl font-bold">Lead Dashboard</h1>
       <div />
     </div>
   </header>
