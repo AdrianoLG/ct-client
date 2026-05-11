@@ -20,6 +20,10 @@ yarn install
 bun install
 ```
 
+## Env
+
+Rename .env-structure to .env and change to your requirements
+
 ## Development Server
 
 Start the development server on `http://localhost:3001`:
