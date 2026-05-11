@@ -22,7 +22,7 @@ const {
     <h3 class="text-lg font-bold">Register New Lead</h3>
     <div class="flex flex-col gap-4 mt-4">
       <div>
-        <label class="text-sm">Full Name</label>
+        <label class="text-sm">Full Name <span class="text-red-500">*</span></label>
         <input
           v-model="form.fullName"
           type="text"
@@ -33,7 +33,7 @@ const {
         <p v-if="touched.fullName && errors.fullName" class="text-xs text-red-500 mt-1">{{ errors.fullName }}</p>
       </div>
       <div>
-        <label class="text-sm">Email Address</label>
+        <label class="text-sm">Email Address <span class="text-red-500">*</span></label>
         <input
           v-model="form.email"
           type="email"
@@ -44,7 +44,7 @@ const {
         <p v-if="touched.email && errors.email" class="text-xs text-red-500 mt-1">{{ errors.email }}</p>
       </div>
       <div>
-        <label class="text-sm">Birth Date</label>
+        <label class="text-sm">Birth Date <span class="text-red-500">*</span></label>
         <input
           v-model="form.birthDate"
           type="date"
@@ -55,7 +55,7 @@ const {
         <p v-if="touched.birthDate && errors.birthDate" class="text-xs text-red-500 mt-1">{{ errors.birthDate }}</p>
       </div>
       <div>
-        <label class="text-sm">Select City</label>
+        <label class="text-sm">Select City <span class="text-red-500">*</span></label>
         <select
           v-model="form.city"
           :class="[!touched.city ? 'bg-white' : '', 'border p-2 w-full rounded-md', fieldClass('city')]"
@@ -69,7 +69,7 @@ const {
         <p v-if="touched.city && errors.city" class="text-xs text-red-500 mt-1">{{ errors.city }}</p>
       </div>
       <div>
-        <label class="text-sm">Select Campaign</label>
+        <label class="text-sm">Select Campaign <span class="text-red-500">*</span></label>
         <select
           v-model="form.campaign"
           :class="[!touched.campaign ? 'bg-white' : '', 'border p-2 w-full rounded-md', fieldClass('campaign')]"
@@ -91,7 +91,7 @@ const {
           @change="touchAndValidate('acceptedTerms')"
           @blur="touchAndValidate('acceptedTerms')"
         >
-        <label for="terms">I agree to the Terms & Conditions</label>
+        <label for="terms">I agree to the Terms & Conditions <span class="text-red-500">*</span></label>
         <p v-if="touched.acceptedTerms && errors.acceptedTerms" class="text-xs text-red-500 mt-1">{{ errors.acceptedTerms }}</p>
       </div>
     </div>
