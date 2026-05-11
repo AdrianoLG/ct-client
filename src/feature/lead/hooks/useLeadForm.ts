@@ -1,53 +1,15 @@
 import { computed, onMounted, ref } from 'vue'
 
+import { initialErrors, initialForm, initialTouched } from '../types/leadTypes'
 import { isRequired, isValidDate, isValidEmail } from '../utils/leadValidators'
+import { useReportData } from './useReportData'
 
-type FieldName =
-  | 'fullName'
-  | 'email'
-  | 'birthDate'
-  | 'city'
-  | 'campaign'
-  | 'acceptedTerms'
-type CityOption = { id: number; city_name: string }
-type CampaignOption = { id: number; name: string }
-
-type LeadFormState = {
-  fullName: string
-  email: string
-  birthDate: string
-  city: string
-  campaign: string
-  acceptedTerms: boolean
-}
-
-const initialForm: LeadFormState = {
-  fullName: '',
-  email: '',
-  birthDate: '',
-  city: '',
-  campaign: '',
-  acceptedTerms: false
-}
-
-const initialTouched: Record<FieldName, boolean> = {
-  fullName: false,
-  email: false,
-  birthDate: false,
-  city: false,
-  campaign: false,
-  acceptedTerms: false
-}
-
-const initialErrors: Record<FieldName, string> = {
-  fullName: '',
-  email: '',
-  birthDate: '',
-  city: '',
-  campaign: '',
-  acceptedTerms: ''
-}
-
+import type {
+  CampaignOption,
+  CityOption,
+  FieldName,
+  LeadFormState
+} from '../types/leadTypes'
 export function useLeadForm() {
   const form = ref<LeadFormState>({ ...initialForm })
   const touched = ref<Record<FieldName, boolean>>({ ...initialTouched })
@@ -61,6 +23,7 @@ export function useLeadForm() {
   const isSubmitting = ref(false)
 
   const config = useRuntimeConfig()
+  const { fetchReportData } = useReportData()
   const fields: FieldName[] = [
     'fullName',
     'email',
@@ -160,6 +123,7 @@ export function useLeadForm() {
 
       submitSuccess.value = 'Lead creado correctamente'
       resetForm()
+      await fetchReportData()
     } catch (error: unknown) {
       const typedError = error as {
         data?: { message?: string }

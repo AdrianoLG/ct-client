@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useReportData } from '../hooks/useReportData'
+
+const { campaigns, fetchReportData } = useReportData()
+
+onMounted(() => {
+  fetchReportData()
+})
+</script>
+
 <template>
   <div class="p-6 w-full">
     <h3 class="text-lg font-bold">Campaign Performance Report</h3>
@@ -10,12 +21,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="bg-white">
-          <td class="px-4 py-2">Nombre</td>
-          <td class="px-4 py-2">45</td>
-          <td class="px-4 py-2">Madrid</td>
+        <tr v-for="campaign in campaigns" :key="campaign.campaignName" class="bg-white">
+          <td class="px-4 py-2">{{ campaign.campaignName }}</td>
+          <td class="px-4 py-2">{{ campaign.totalLeads }}</td>
+          <td class="px-4 py-2">{{ campaign.topContributingCity }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
+
+
